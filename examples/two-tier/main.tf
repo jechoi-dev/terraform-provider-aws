@@ -3,7 +3,7 @@ provider "aws" {
   region = "${var.aws_region}"
 }
 
-# Create a VPC to launch our instances into
+#dd Create a VPC to launch our instances into
 resource "aws_vpc" "default" {
   cidr_block = "10.0.0.0/16"
 }
@@ -99,7 +99,7 @@ resource "aws_elb" "web" {
 
 resource "aws_key_pair" "auth" {
   key_name   = "${var.key_name}"
-  public_key = "${file(var.public_key_path)}"
+  public_key = "${var.public_key_path}"
 }
 
 resource "aws_instance" "web" {
