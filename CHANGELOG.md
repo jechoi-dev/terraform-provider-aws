@@ -11,13 +11,20 @@ ENHANCEMENTS:
 * resource/aws_ecs_service: Increase delete retry timeout from 5 to 20 minutes [GH-10452]
 * resource/aws_ecs_service: Support configurable delete timeout [GH-10452]
 * resource/aws_elasticsearch_domain: Add `advanced_security_options` configuration block [GH-12183]
+* resource/aws_sfn_state_machine: Add `arn` attribute [GH-12005]
 
 BUG FIXES:
 
 * resource/aws_autoscaling_group: Prevent unexpected differences in `tags` for Terraform 0.11 and earlier with boolean `propagate_at_launch` values [GH-13912]
 * resource/aws_backup_selection: Correctly handle the associated backup plan being deleted outside Terraform [GH-13945]
+* resource/aws_customer_gateway: Continue allowing 4-byte ASN values in `bgp_asn` argument [GH-14030]
 * resource/aws_db_instance: Prevent schema version 1 upgrade panic on missing state [GH-13928]
+* resource/aws_db_instance_role_association: Prevent immediate read after creation panic [GH-13927]
 * resource/aws_efs_mount_target: Ensure empty string (`""`) validation in `ip_address` argument continues to work for Terraform 0.11 support [GH-13958]
+* resource/aws_route53_record: Ensure old Route53 record is deleted when updating `name` argument [GH-11335]
+* resource/aws_route53_record: Prevent errors when `health_check_id` argument is configured and updating `set_identifier` or `type` arguments [GH-13012]
+* resource/aws_sfn_state_machine: Handle IAM Role eventual consistency on creation and wait for state machine deletion [GH-12005]
+* resource/aws_spot_fleet_request: Increase default delete timeout to 15 minutes [GH-13922]
 * resource/aws_wafv2_web_acl: Support additional nested `and/or/not statement` in `rule` `statement` and `rule` `statement` `rate_based_statement` attributes [GH-13961]
 
 ## 2.68.0 (June 25, 2020)
