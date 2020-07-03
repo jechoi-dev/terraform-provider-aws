@@ -3,9 +3,9 @@ provider "aws" {
   region = "${var.aws_region}"
 }
 
-# Create a VPC to launch our instances into
+#dd Create a VPC to launch our instances into
 resource "aws_vpc" "default" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "20.0.0.0/16"
 }
 
 # Create an internet gateway to give our subnet access to the outside world
@@ -23,7 +23,7 @@ resource "aws_route" "internet_access" {
 # Create a subnet to launch our instances into
 resource "aws_subnet" "default" {
   vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = "20.0.1.0/24"
   map_public_ip_on_launch = true
 }
 
@@ -99,7 +99,7 @@ resource "aws_elb" "web" {
 
 resource "aws_key_pair" "auth" {
   key_name   = "${var.key_name}"
-  public_key = "${file(var.public_key_path)}"
+  public_key = "${var.public_key_path}"
 }
 
 resource "aws_instance" "web" {
