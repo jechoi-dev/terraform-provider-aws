@@ -5,7 +5,7 @@ provider "aws" {
 
 #dd Create a VPC to launch our instances into
 resource "aws_vpc" "default" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = "20.0.0.0/16"
 }
 
 # Create an internet gateway to give our subnet access to the outside world
