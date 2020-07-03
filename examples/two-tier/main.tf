@@ -3,7 +3,7 @@ provider "aws" {
   region = "${var.aws_region}"
 }
 
-#dd Create a VPC to launch our instances into
+#Create a VPC to launch our instances into
 resource "aws_vpc" "default" {
   cidr_block = "20.0.0.0/16"
 }
