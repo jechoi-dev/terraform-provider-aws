@@ -23,7 +23,7 @@ resource "aws_route" "internet_access" {
 # Create a subnet to launch our instances into
 resource "aws_subnet" "default" {
   vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "10.0.1.0/24"
+  cidr_block              = "20.0.1.0/24"
   map_public_ip_on_launch = true
 }
 
@@ -132,11 +132,18 @@ resource "aws_instance" "web" {
   # We run a remote provisioner on the instance after creating it.
   # In this case, we just install nginx and start it. By default,
   # this should be on port 80
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
-    ]
-  }
+#  provisioner "remote-exec" {
+#    inline = [
+#      "sudo apt-get -y update",
+#      "sudo apt-get -y install nginx",
+#      "sudo service nginx start",
+#    ]
+#  }
+#}
+user_data = <<-EOF
+              #!/bin/bash
+              apt-get -y update
+              apt-get -y install nginx
+              service nginx start
+              EOF
 }
